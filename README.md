@@ -49,6 +49,7 @@ May 14 18:52:25 instance-20220423-0021 systemd[1]: Started user1 Apache Tomcat W
 # Informations to know
 
 tomcat service path /etc/systemd/system/user1-tomcat.service
+
 tomcat path	/opt/user1-tomcat
 
 ## Contributing
