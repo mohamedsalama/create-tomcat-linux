@@ -5,7 +5,7 @@ Create tomcat instance on opt folder with fix permissions on folders based on cr
 ## Usage
 
 first you can download tomcat from this [link](https://downloads.apache.org/tomcat/)
-choose your tomcat version and download it ===
+choose your tomcat version and download it
 
 to run this script you should run it as below
 
@@ -13,7 +13,7 @@ to run this script you should run it as below
 sh tomcat-server.sh {path-for-tomcat} {user-name} 
 ```
 
-example on how to run ===
+example on how to run
 
 ```bash
 sh tomcat-server.sh apache-tomcat-9.x.xx.tar.gz user1
