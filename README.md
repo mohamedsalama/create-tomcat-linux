@@ -1,6 +1,10 @@
 # create-tomcat-linux
 Create tomcat instance on opt folder with fix permissions on folders based on creation user on linux servers
 
+===
+first you can download tomcat from this link https://downloads.apache.org/tomcat/
+choose your tomcat version and download it ===
+
 to run this script you should run it as below
 
 sh tomcat-server.sh {path-for-tomcat} {user-name} 
