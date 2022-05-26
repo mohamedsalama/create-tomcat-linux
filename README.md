@@ -60,7 +60,7 @@ tomcat server port located on /config/server.xml file under tomcat folders
 
 to start service you will need to run below command by root user
 ```
-systemctl start $2-tomcat.service
+systemctl start user1-tomcat.service
 ```
 ## Contributing
 
