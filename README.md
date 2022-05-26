@@ -58,9 +58,9 @@ after script run it will try to start tomcat service so if 8080 is reserved on y
 
 tomcat server port located on /config/server.xml file under tomcat folders
 
-to start service you will need to run
+to start service you will need to run below command by root user
 ```
-systemctl start $2-tomcat.service by root user
+systemctl start $2-tomcat.service
 ```
 ## Contributing
 
