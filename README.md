@@ -1,16 +1,16 @@
 # create-tomcat-linux
 
-Create tomcat instance on opt folder with fix permissions on folders based on creation user on linux servers
+Create tomcat instance on opt (You can change it from source code before you run it) folder with fix permissions on tomcat folders based on creation user that created on linux servers (tested with ubuntu, parrot, redhat 8, centos7, centos8)
 
 ## Usage
 
-first you can download tomcat from this [link](https://downloads.apache.org/tomcat/)
+First you can download tomcat from this [link](https://downloads.apache.org/tomcat/)
 choose your tomcat version and download it
 
 to run this script you should run it as below
 
 ```bash
-sh tomcat-server.sh {path-for-tomcat} {user-name} 
+sh tomcat-server.sh {path-for-tomcat-zip-file} {user-name} 
 ```
 
 example on how to run
@@ -18,6 +18,8 @@ example on how to run
 ```bash
 sh tomcat-server.sh apache-tomcat-9.x.xx.tar.gz user1
 ```
+
+apache-tomcat-9.x.xx.tar.gz here is just sample, this work and tested with tomcat versions from 7 to 10
 
 ## example output
 
