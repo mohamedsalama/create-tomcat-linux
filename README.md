@@ -54,6 +54,14 @@ tomcat service path /etc/systemd/system/user1-tomcat.service
 
 tomcat path	/opt/user1-tomcat
 
+after script run it will try to start tomcat service so if 8080 is reserved on your server tomcat won't start in this case and start service will fail because of the port reservation. you will need to change port number in tomcat and try to start service again.
+
+tomcat server port located on /config/server.xml file under tomcat folders
+
+to start service you will need to run
+```
+systemctl start $2-tomcat.service by root user
+```
 ## Contributing
 
 Contributions are always welcome!
