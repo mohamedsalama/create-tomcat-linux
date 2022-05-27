@@ -1,6 +1,6 @@
 # create-tomcat-linux
 
-Create tomcat instance on opt (You can change it from source code before you run it) folder with fix permissions on tomcat folders based on creation user that created on linux servers (tested with ubuntu, parrot, redhat 8, centos7, centos8)
+Create tomcat instance on opt (You can change it from source code before you run it) folder with fix permissions on tomcat folders based on created user that created on linux servers (tested with ubuntu, parrot, redhat 8, centos7, centos8)
 
 ## Usage
 
