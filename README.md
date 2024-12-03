@@ -1,35 +1,42 @@
+
 # create-tomcat-linux
 
-Create tomcat instance on opt (You can change it from source code before you run it) folder with fix permissions on tomcat folders based on created user that created on linux servers (tested with ubuntu, parrot, redhat 8, centos7, centos8)
+Create a Tomcat instance in the `/opt` directory (modifiable from the source code) with proper permissions for Tomcat folders based on a user created on Linux servers. This script has been tested with Ubuntu, Parrot, Red Hat 8, CentOS 7, and CentOS 8.
+
+## Updates
+
+- **User check**: The script now checks if the specified user exists before creating it.
+- **Directory check**: The script verifies if the necessary directories exist before attempting to create them.
+- **File validation**: The script checks if the Tomcat zip file exists before proceeding.
 
 ## Usage
 
-First you can download tomcat from this [link](https://downloads.apache.org/tomcat/)
-choose your tomcat version and download it. You will find tomcat ```tar.gz``` file located under ```bin``` folder after you choose your tomcat version. To download it you can use ```wget``` command as example below
+First, download Tomcat from this [link](https://downloads.apache.org/tomcat/). Choose your preferred Tomcat version and download it. You will find the Tomcat `.tar.gz` file located under the `bin` folder for the selected version. To download, you can use the `wget` command, as shown below:
 
-```
+```bash
 wget https://downloads.apache.org/tomcat/tomcat-9/v9.0.63/bin/apache-tomcat-9.0.63.tar.gz
 ```
 
-To run this script you should run it as below
+To run this script, use the following command:
 
 ```bash
-sh tomcat-server.sh {path-for-tomcat-zip-file} {user-name} 
+sh tomcat-server.sh {path-for-tomcat-zip-file} {user-name}
 ```
 
-Example on how to run
+Example:
 
 ```bash
 sh tomcat-server.sh apache-tomcat-9.0.63.tar.gz user1
 ```
 
-```apache-tomcat-9.0.63.tar.gz``` here is just example
+Here, `apache-tomcat-9.0.63.tar.gz` is just an example.
 
-## Example output
+## Example Output
 
-```python
+```bash
 == start work on tomcat on location apache-tomcat-9.x.xx.tar.gz with user user1 ==
-== create group and user with the user user1 ==
+== User user1 already exists. Skipping creation. ==
+== Directory /opt/user1-tomcat already exists. Skipping creation. ==
 == extract tomcat ==
 == extract done ==
 == fix tomcat permissions for user user1 ==
@@ -49,61 +56,62 @@ check tomcat service status
 
 May 14 18:52:25 instance-20220423-0021 systemd[1]: Starting user1 Apache Tomcat Web Application Co>
 May 14 18:52:25 instance-20220423-0021 systemd[1]: Started user1 Apache Tomcat Web Application Con>
-== finished create apache-tomcat-9.x.xx.tar.gz tomcat on /opt/user1-tomcat with user user1 ==
+== finished creating apache-tomcat-9.x.xx.tar.gz tomcat on /opt/user1-tomcat with user user1 ==
 ```
 
-# Informations to know
+## Informations to Know
 
-Tomcat service path ```/etc/systemd/system/user1-tomcat.service```
+- **Tomcat service path**: `/etc/systemd/system/user1-tomcat.service`
+- **Tomcat path**: `/opt/user1-tomcat`
 
-Tomcat path	```/opt/user1-tomcat```
+After the script runs, it will attempt to start the Tomcat service. If port `8080` is reserved on your server, the service will fail to start. To resolve this, change the port number in Tomcat's `server.xml` configuration file.
 
-After script run it will try to start tomcat service so if ```8080``` is reserved on your server tomcat won't start in this case and start service will fail because of the port reservation. You will need to change port number in tomcat and try to start service again.
+Tomcat server port is located in the `config/server.xml` file under Tomcat folders.
 
-Tomcat server port located on ```/config/server.xml``` file under tomcat folders.
+To start the service, run the following command as a root user or with `sudo`:
 
-To start service you will need to run below command by root user or you can ```sudo``` it.
-```
+```bash
 systemctl start user1-tomcat.service
 ```
 
-## Tips tricks
+## Tips and Tricks
 
-Service take any jvm args like below
+The service accepts JVM arguments like the following:
+
 ```
 -Xms512M -Xmx1024M -XX:MaxDirectMemorySize=512M -server -XX:+UseParallelGC
 ```
-Lets describe them may be you need to change them or add another on your environment.
 
-For -Xms512M : specifies the initial memory allocation pool.
+Descriptions of these options:
 
--Xmx1024M : specifies the maximum memory allocation pool for a Java Virtual Machine (JVM).
+- `-Xms512M`: Specifies the initial memory allocation pool.
+- `-Xmx1024M`: Specifies the maximum memory allocation pool for a Java Virtual Machine (JVM).
+- `-XX:MaxDirectMemorySize=512M`: Limits memory reserved for all Direct Byte Buffers.
+- `-XX:+UseParallelGC`: Enables parallel garbage collection.
 
--XX:MaxDirectMemorySize=512M : the limit on memory that can be reserved for all Direct Byte Buffers.
+## Environments and Versions
 
--XX:+UseParallelGC : will turn on the parallel garbage collection.
+### Tested Linux Environments:
 
+- Ubuntu, Ubuntu Server
+- CentOS 7 & 8
+- Parrot Sec
+- Enterprise Red Hat 8
+- Debian
+- AlmaLinux 9
 
-## Environments and versions
-Linux environments that this scripts tested with is 
+### Tested Tomcat Versions:
 
-- Ubuntu, Ubuntu server
-- Centos 7 & 8
-- Parrot
-- Redhat 8
-
-and tomcat versions is
-- tomcat 7
-- tomcat 8
-- tomcat 9
-- tomcat 10
-
+- Tomcat 7
+- Tomcat 8
+- Tomcat 9
+- Tomcat 10
+- Tomcat 11
 
 ## Contributing
 
-Contributions are always welcome!
-
-Please make sure to update ```README``` as appropriate.
+Contributions are always welcome! Please make sure to update the `README` as appropriate.
 
 ## License
+
 [Apache 2.0](https://choosealicense.com/licenses/apache-2.0/)
